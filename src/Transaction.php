@@ -3,8 +3,8 @@
 declare(strict_types=1);
 
 class Transaction {
-    public float $amount;
-    public string $description;
+    private float $amount;
+    private string $description;
 
     /**
      * Class constructor.
@@ -14,4 +14,30 @@ class Transaction {
         $this->amount = $amount;
         $this->description = $description;
     }
+
+    // public function addTax(float $rate){
+    //     $this->amount += $this->amount * $rate / 100;
+    // }
+
+    public function addTax(float $rate) : Transaction {
+        $this->amount += $this->amount * $rate / 100;
+
+        return $this;
+    }
+
+    // public function applyDiscount(float $rate){
+    //     $this->amount -= $this->amount * $rate / 100;
+    // }
+
+    public function applyDiscount(float $rate): Transaction{
+        $this->amount -= $this->amount * $rate / 100;
+
+        return $this;
+    }
+
+    public function getAmount(){
+        return $this->amount;
+    }
+
+
 }
