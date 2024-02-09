@@ -1,7 +1,11 @@
 <?php
 
-phpinfo();
+//Classes & Objects
 
-echo '<pre>';
-print_r($_SERVER);
-echo '</pre>';
+// import class
+require_once '../Transaction.php';
+
+//create transaction object
+$transaction = new Transaction(15,'Transaction 1');
+
+var_dump($transaction->amount);
