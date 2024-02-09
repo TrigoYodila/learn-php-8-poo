@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace PaymentGateway\Paddle;
+namespace App\PaymentGateway\Paddle;
 
 //import DateTime class
 use DateTime;
@@ -27,6 +27,6 @@ class Transaction{
        //var_dump(new DateTime());
 
        //use a class from a other namespace
-       var_dump(new \Notification\Email());
+       var_dump(new \App\Notification\Email());
     }
 }
