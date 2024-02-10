@@ -12,18 +12,21 @@
     require $path;
 });*/
 
-//load with composer
-require __DIR__ . '/../vendor/autoload.php';
+//load files with composer
+require_once __DIR__ . '/../vendor/autoload.php';
 
 use App\PaymentGateway\Paddle\Transaction;
 
 $paddleTransaction = new Transaction();
 
-var_dump($paddleTransaction);
+//var_dump($paddleTransaction);
 
 //used uuid package
-
 //importation du namespace uuid
 $id = new \Ramsey\Uuid\UuidFactory();
 
-echo $id->uuid4();
+//echo $id->uuid4();
+
+//used constants
+
+echo Transaction::STATUS_PAID;

@@ -11,6 +11,9 @@ use DateTime;
 use PaymentGateway\Stripe\Transaction as StipeTransaction;
 
 class Transaction{
+
+    //constants
+    public const STATUS_PAID = 'paid';
     
     /**
      * Class constructor.
@@ -27,6 +30,6 @@ class Transaction{
        //var_dump(new DateTime());
 
        //use a class from a other namespace
-       var_dump(new \App\Notification\Email());
+       //var_dump(new \App\Notification\Email());
     }
 }
