@@ -14,11 +14,18 @@ class Transaction{
 
     //constants
     public const STATUS_PAID = 'paid';
+
+    //static properties
+    public static int $count = 0;
+    private static string $name = 'Trigo';
     
     /**
      * Class constructor.
      */
-    public function __construct()
+    public function __construct(
+        public float $amount,
+        public string $description
+    )
     {
        //use other class in the same namespace
        //var_dump(new CustomerProfile());
@@ -31,5 +38,17 @@ class Transaction{
 
        //use a class from a other namespace
        //var_dump(new \App\Notification\Email());
+
+       self::$count++;
+
+    }
+
+    public static function getName(){
+        return self::$name;
+    }
+
+    public function process()
+    {
+        echo 'Processing paddle transaction...';
     }
 }

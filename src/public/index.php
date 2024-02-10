@@ -17,7 +17,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 use App\PaymentGateway\Paddle\Transaction;
 
-$paddleTransaction = new Transaction();
+//$paddleTransaction = new Transaction();
 
 //var_dump($paddleTransaction);
 
@@ -30,3 +30,6 @@ $id = new \Ramsey\Uuid\UuidFactory();
 //used constants
 
 echo Transaction::STATUS_PAID;
+
+var_dump(Transaction::$count);
+var_dump(Transaction::getName());
