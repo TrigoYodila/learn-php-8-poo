@@ -16,7 +16,9 @@
 require_once __DIR__ . '/../vendor/autoload.php';
 
 use App\PaymentGateway\Paddle\Transaction;
-use App\PaymentGateway\Stripe\Transaction;
+use App\PaymentGateway\Stripe\Transaction as StripeTransaction;
+use App\Toaster;
+use App\ToasterPro;
 
 //$paddleTransaction = new Transaction();
 
@@ -30,7 +32,20 @@ $id = new \Ramsey\Uuid\UuidFactory();
 
 //used constants
 
-echo Transaction::STATUS_PAID;
+// echo Transaction::STATUS_PAID;
 
-var_dump(Transaction::$count);
-var_dump(Transaction::getName());
+// var_dump(Transaction::$count);
+// var_dump(Transaction::getName());
+
+//Heritage
+
+$toaster = new Toaster();
+$toasterBagel = new ToasterPro();
+
+$toaster->addSlice('bread');
+$toaster->toast();
+$toasterBagel->addSlice('God');
+$toasterBagel->addSlice('God');
+$toasterBagel->addSlice('God');
+$toasterBagel->addSlice('God');
+$toasterBagel->toastBagel();
