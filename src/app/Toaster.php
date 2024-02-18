@@ -2,7 +2,7 @@
 
 namespace App;
 
-class Toaster 
+class Toaster  // add final before class, class can't inherited
 {
     // protected array $slices = [];
     // protected int $size = 2;
@@ -18,7 +18,7 @@ class Toaster
         $this->size = 2;
     }
 
-    public function addSlice(string $slice):void
+    public function addSlice(string $slice):void  // final before methods, it can't redefined
     {
         if (count($this->slices) < $this->size){
             $this->slices[] = $slice;

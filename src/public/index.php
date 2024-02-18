@@ -39,13 +39,25 @@ $id = new \Ramsey\Uuid\UuidFactory();
 
 //Heritage
 
-$toaster = new Toaster();
-$toasterBagel = new ToasterPro();
+// $toaster = new Toaster();
+// $toasterBagel = new ToasterPro();
 
-$toaster->addSlice('bread');
-$toaster->toast();
-$toasterBagel->addSlice('God');
-$toasterBagel->addSlice('God');
-$toasterBagel->addSlice('God');
-$toasterBagel->addSlice('God');
-$toasterBagel->toastBagel();
+// $toaster->addSlice('bread');
+// $toaster->toast();
+// $toasterBagel->addSlice('God');
+// $toasterBagel->addSlice('God');
+// $toasterBagel->addSlice('God');
+// $toasterBagel->addSlice('God');
+// $toasterBagel->toastBagel();
+
+//Abstract class and methods
+
+$fields = [
+    new \App\Text('textField'),
+    new \App\Checkbox('checkboxField'),
+    new \App\Radio('radioField'),
+];
+
+foreach ($fields as $field) {
+    echo $field->render() . '<br />';
+}
