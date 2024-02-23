@@ -52,12 +52,18 @@ $id = new \Ramsey\Uuid\UuidFactory();
 
 //Abstract class and methods
 
-$fields = [
-    new \App\Text('textField'),
-    new \App\Checkbox('checkboxField'),
-    new \App\Radio('radioField'),
-];
+// $fields = [
+//     new \App\Text('textField'),
+//     new \App\Checkbox('checkboxField'),
+//     new \App\Radio('radioField'),
+// ];
 
-foreach ($fields as $field) {
-    echo $field->render() . '<br />';
-}
+// foreach ($fields as $field) {
+//     echo $field->render() . '<br />';
+// }
+
+
+// Interfaces
+ $collector = new \App\CollectionAgency();
+
+ echo $collector->collect(100) . PHP_EOL;
