@@ -64,6 +64,29 @@ $id = new \Ramsey\Uuid\UuidFactory();
 
 
 // Interfaces
- $collector = new \App\CollectionAgency();
 
- echo $collector->collect(100) . PHP_EOL;
+//  $collector = new \App\CollectionAgency();
+
+//  echo $collector->collect(100) . PHP_EOL;
+
+// Traits (Heritage multiples)
+
+$coffeeMarker = new \App\CoffeeMarker();
+$coffeeMarker->makeCoffee();
+
+$latteMarker = new \App\LatteMarker();
+$latteMarker->makeCoffee();
+$latteMarker->makeLatte();
+
+//$cappucinoMarker = new \App\CappuccinoMarker();
+//$cappucinoMarker->makeCoffee();
+//$cappucinoMarker->makeCappucino();
+
+$testMarker = new \App\CappucinoMarker();
+$testMarker->makeCappucino();
+
+//class implements traits for mutliple heritage
+$allInOneCoffeeMarker = new \App\AllInOneCoffeeMarker();
+$allInOneCoffeeMarker->makeCoffee();
+$allInOneCoffeeMarker->makeLatte();
+$allInOneCoffeeMarker->makeCappucino();
