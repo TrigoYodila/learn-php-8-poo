@@ -71,22 +71,45 @@ $id = new \Ramsey\Uuid\UuidFactory();
 
 // Traits (Heritage multiples)
 
-$coffeeMarker = new \App\CoffeeMarker();
-$coffeeMarker->makeCoffee();
+// $coffeeMarker = new \App\CoffeeMarker();
+// $coffeeMarker->makeCoffee();
 
-$latteMarker = new \App\LatteMarker();
-$latteMarker->makeCoffee();
-$latteMarker->makeLatte();
+// $latteMarker = new \App\LatteMarker();
+// $latteMarker->makeCoffee();
+// $latteMarker->makeLatte();
 
 //$cappucinoMarker = new \App\CappuccinoMarker();
 //$cappucinoMarker->makeCoffee();
 //$cappucinoMarker->makeCappucino();
 
-$testMarker = new \App\CappucinoMarker();
-$testMarker->makeCappucino();
+// $testMarker = new \App\CappucinoMarker();
+// $testMarker->makeCappucino();
 
 //class implements traits for mutliple heritage
-$allInOneCoffeeMarker = new \App\AllInOneCoffeeMarker();
-$allInOneCoffeeMarker->makeCoffee();
-$allInOneCoffeeMarker->makeLatte();
-$allInOneCoffeeMarker->makeCappucino();
+// $allInOneCoffeeMarker = new \App\AllInOneCoffeeMarker();
+// $allInOneCoffeeMarker->makeCoffee();
+// $allInOneCoffeeMarker->makeLatte();
+// $allInOneCoffeeMarker->makeCappucino();
+
+// class anonymes
+
+// $obj = new class(1,2,3){
+    
+//     public function __construct(int $x, int $y, int $z)
+//     {
+//         $this-> = $;
+//     }
+// }
+
+// Comparaison of objects
+
+// use App\Invoice;
+
+// $invoice1 = new Invoice(1, 'My Invoice 1');
+// $invoice2 = new Invoice(2, 'My Invoice 2');
+
+// echo 'invoice1 == invoice2 ' . PHP_EOL;
+// var_dump($invoice1 == $invoice2);
+
+// echo 'invoice1 === invoice2' . PHP_EOL;
+// var_dump($invoice1 === $invoice2);
