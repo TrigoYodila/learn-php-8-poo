@@ -8,11 +8,23 @@ class Home
 {
     public function index():string
     {
-        return 'Home';
+        // return 'Home';
+
+        // echo '<pre>';
+        //    var_dump($_REQUEST);
+        // echo '</pre>';
+
+        // echo '<pre>';
+        //     var_dump($_GET);
+        // echo '</pre>';
+
+        // echo '<pre>';
+        //     var_dump($_POST);
+        // echo '</pre>';
+
+        return '<form action="/?foo=bar&amount=250" method="post"><label>Amount</label><input type="text" name="amount" /></form>';
+
     }
 
-    public function create():string 
-    {
-        return 'Create Invoice';
-    }
+    
 }
