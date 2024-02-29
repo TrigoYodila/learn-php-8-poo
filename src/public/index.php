@@ -2,6 +2,10 @@
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
+//started session
+
+//session_start();
+
 $router = new App\Router();
 
 // $router->register(
@@ -25,3 +29,7 @@ $router
 // );
 
 echo $router->resolve($_SERVER['REQUEST_URI'], strtolower($_SERVER['REQUEST_METHOD']));
+
+// var_dump($_SESSION);
+
+var_dump($_COOKIE);

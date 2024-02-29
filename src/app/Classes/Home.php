@@ -22,6 +22,16 @@ class Home
         //     var_dump($_POST);
         // echo '</pre>';
 
+        // mise à jour de la valeur de la session
+        // $_SESSION['count'] = ($_SESSION['count'] ?? 0) + 1;
+
+        //création du cookie
+        setcookie(
+            'user',
+            'Kolas',
+            time() + 10
+        );
+
         return '<form action="/?foo=bar&amount=250" method="post"><label>Amount</label><input type="text" name="amount" /></form>';
 
     }
