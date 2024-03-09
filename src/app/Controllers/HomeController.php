@@ -5,17 +5,22 @@ declare(strict_types = 1);
 namespace App\Controllers;
 
 use App\View;
+//import pdo
+use PDO;
 
 class HomeController
 {
     public function index():View
     {
 
-        phpinfo();
-        
-        // return (new View('index'))->render();
-        // on returne l'objet comme une chaine de caractère,
-        // ce qui executera la methode render
+       // connect to db
+       try {
+         $db = new PDO('mysql:host=db;dbname=my_db','root','root');
+       } catch (\PDOException $e) {
+        throw new \PDOException($e->getMessage(), $e->getCode());
+       }
+
+       var_dump($db);
         return View::make('index');
     }
 
