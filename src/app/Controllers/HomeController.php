@@ -12,6 +12,97 @@ class HomeController
 {
     public function index():View
     {
+        try {
+            $db = new PDO('mysql:host=db;dbname=my_db','root','root');
+        } catch (\PDOException $e) {
+            throw new \PDOException($e->getMessage(),(int) $e->getCode());
+        }
+
+        $email = 'kolas@dri.com';
+        $name = 'Kolas Yod';
+        $amount = 25;
+
+        try {
+            //begin transaction
+            $db->beginTransaction();
+
+            $newUserStmt = $db->prepare(
+                'INSERT INTO users (email, full_name, is_active, created_at)
+                 VALUES (?, ?, 1, NOW())'
+            );
+    
+            $newInvoiceStmt = $db->prepare(
+                'INSERT INTO invoices (amount, user_id)
+                 VALUES (?, ?)'
+            );
+    
+            $newUserStmt->execute([$email, $name]);
+    
+            $userId = (int) $db->lastInsertId();
+    
+            $newInvoiceStmt->execute([$amount, $userId]);
+
+            $db->commit();
+        } catch (\Throwable $e) {
+            if($db->inTransaction()){
+                $db->rollBack();
+            }
+
+            throw $e;
+        }
+
+        
+        $fetchStmt = $db->prepare(
+            'SELECT invoices.id AS invoice_id, amount, user_id, full_name
+             FROM invoices
+             INNER JOIN users ON user_id = users.id
+             WHERE email = ?'
+        );
+
+        $fetchStmt->execute([$email]);
+
+        echo '<pre>';
+        var_dump($fetchStmt->fetch(PDO::FETCH_ASSOC));
+        echo '</pre>';
+
+        return View::make('index');
+    }
+
+    public function download()
+    {
+        //envoyer le type du contenu
+        header('Content-Type:application/image');
+        //disposition du contenu avec nom du fichier qu'on veut télécharger
+        header('Content-Disposition:attachment;filename="myfile.png"');
+
+        readfile(STORAGE_PATH . '/ACCUEIL.png');
+    }
+
+    public function upload()
+    {
+       
+        //chemin de stockage de l'image, concatène le chemin de stockage
+        //avec le name de l'image
+        $filePath =  STORAGE_PATH . '/' . $_FILES['receipt']['name'];
+
+        //deplace le fichier vers le chemin
+        move_uploaded_file($_FILES['receipt']['tmp_name'],$filePath);
+
+        header('Location: /');
+
+        exit;
+
+        // echo '<pre>';
+        // var_dump(pathinfo($filePath));
+        // echo '<pre>';
+
+        //supprimer un fichier
+
+        //unlink(STORAGE_PATH . '/ACCUEIL.png');
+    }
+
+    public function indexothers():View
+    {
 
        // connect to db
        try {
@@ -87,39 +178,6 @@ class HomeController
        }
 
         return View::make('index');
-    }
-
-    public function download()
-    {
-        //envoyer le type du contenu
-        header('Content-Type:application/image');
-        //disposition du contenu avec nom du fichier qu'on veut télécharger
-        header('Content-Disposition:attachment;filename="myfile.png"');
-
-        readfile(STORAGE_PATH . '/ACCUEIL.png');
-    }
-
-    public function upload()
-    {
-       
-        //chemin de stockage de l'image, concatène le chemin de stockage
-        //avec le name de l'image
-        $filePath =  STORAGE_PATH . '/' . $_FILES['receipt']['name'];
-
-        //deplace le fichier vers le chemin
-        move_uploaded_file($_FILES['receipt']['tmp_name'],$filePath);
-
-        header('Location: /');
-
-        exit;
-
-        // echo '<pre>';
-        // var_dump(pathinfo($filePath));
-        // echo '<pre>';
-
-        //supprimer un fichier
-
-        //unlink(STORAGE_PATH . '/ACCUEIL.png');
     }
 
     
