@@ -10,6 +10,9 @@ class HomeController
 {
     public function index():View
     {
+
+        phpinfo();
+        
         // return (new View('index'))->render();
         // on returne l'objet comme une chaine de caractère,
         // ce qui executera la methode render
